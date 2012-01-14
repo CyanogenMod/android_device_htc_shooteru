@@ -47,67 +47,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ## overlays
 DEVICE_PACKAGE_OVERLAYS += device/htc/shooteru/overlay
 
-# permissions
+# Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
-## qcom/display
+# GPS and Light
 PRODUCT_PACKAGES += \
-    copybit.msm8660 \
-    gralloc.msm8660 \
-    hwcomposer.msm8660 \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI \
-    libtilerenderer
-
-## misc
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
     gps.shooteru \
     lights.shooteru
-
-## cm/audio
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio_policy.msm8660 \
-    audio.primary.msm8660 \
-    libaudioutils
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
-
-# for bugmailer
-ifneq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_PACKAGES += send_bug
-    PRODUCT_COPY_FILES += \
-        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-        system/extras/bugmailer/send_bug:system/bin/send_bug
-endif
 
 ## dsp Audio
 PRODUCT_COPY_FILES += \
@@ -149,26 +96,13 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/htc/shooteru/prebuilt/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc
 
-## Firmware
+# Device Specific Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd \
     device/htc/shooteru/firmware/default_bak.acdb:system/etc/firmware/default_bak.acdb \
-    device/htc/shooteru/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb \
-    device/htc/shooteru/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
-    device/htc/shooteru/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-    device/htc/shooteru/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw 
+    device/htc/shooteru/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb
 
 # HTC BT Audio tune
 PRODUCT_COPY_FILES += device/htc/shooteru/prebuilt/AudioBTID.csv:system/etc/AudioBTID.csv
-
-## we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-## device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 ## misc
 PRODUCT_COPY_FILES += \
@@ -187,12 +121,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
 
-PRODUCT_COPY_FILES += \
-    device/htc/shooteru/prebuilt/init.post_boot.sh:system/etc/init.post_boot.sh
-
-## media config xml file
-#PRODUCT_COPY_FILES += \
-#    device/htc/shooteru/media_profiles.xml:system/etc/media_profiles.xml
+# common msm8660 configs
+$(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 
 ## htc audio settings
 $(call inherit-product, device/htc/shooteru/media_htcaudio.mk)
