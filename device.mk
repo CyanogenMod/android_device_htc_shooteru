@@ -119,7 +119,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
+    device/htc/shooteru/prebuilt/bcm4329.ko:system/lib/modules/bcm4329.ko
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
