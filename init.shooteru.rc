@@ -191,16 +191,6 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmc
     user root
     disabled
 
-service qmuxd /system/bin/qmuxd
-    class main
-
-service netmgrd /system/bin/netmgrd
-    class main
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
-
 # for modem link
 service modem /system/xbin/wireless_modem
     user system

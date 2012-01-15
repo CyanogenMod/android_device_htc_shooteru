@@ -15,11 +15,21 @@ com.qc.hdmi_out=true
 # board has 3D panel
 #persist.user.panel3D=1
 
-ro.telephony.ril.v3=facilitylock,signalstrength,icccardstatus,datacall
+ro.telephony.ril.v3=1
 rild.libpath=/system/lib/libhtc_ril.so
+ro.ril.ecc.HTC-GCC=999,112,997
+ro.ril.ecc.HTC-WWE=999
+ro.ril.ecc.HTC-ELL=92,93,94
+ro.ril.enable.a52.HTC-ITA=1
+ro.ril.enable.a53.HTC-ITA=1
+ro.ril.enable.a52=0
+ro.ril.enable.a53=1
+ro.ril.disable.fd.plmn.prefix=23402,23410,23411
+ro.ril.enable.sdr=1
+ro.ril.enable.amr.wideband=0
 
 # Modify MMS APN retry timer from 5s to 2s.
-ro.gsm.2nd_data_retry_config = max_retries=3, 2000, 2000, 2000
+ro.gsm.2nd_data_retry_config=max_retries=3, 2000, 2000, 2000
 
 # shooteru RF team request
 ro.ril.enable.dtm=0
@@ -31,14 +41,6 @@ ro.ril.hsxpa=3
 # Default network type.
 # 0 => WCDMA preferred.
 ro.telephony.default_network=0
-
-#
-# system props for the data modules
-#
-ro.use_data_netmgrd=true
-persist.data_netmgrd_nint=8
-persist.data_netmgrd_mtu=1472
-#
 
 #Modify MTU from 1500 to 1472 on 3G network
 ro.ril.set.mtu1472=1
