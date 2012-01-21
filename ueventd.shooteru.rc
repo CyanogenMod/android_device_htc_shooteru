@@ -8,7 +8,7 @@
 /dev/msm_rotator        0660    system      graphics
 /dev/gemini*            0660    system      system
 /dev/pmem               0660    system      graphics
-/dev/genlock            0660    system      graphics
+/dev/genlock            0666    system      graphics
 /dev/msm_camera/*       0660    system      camera
 
 # sensors
