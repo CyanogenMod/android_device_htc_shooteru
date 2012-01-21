@@ -123,6 +123,9 @@ on early-fs
     # for charging function
     chown radio radio /sys/module/htc_battery_8x60/parameters/phone_call
     chmod 0660 /sys/module/htc_battery_8x60/parameters/phone_call
+    # to enable low charge current in voice call
+    chown radio radio /sys/class/power_supply/battery/charger_control
+    chmod 0660 /sys/class/power_supply/battery/charger_control
 
     # for Slate charging timer
     chown radio /sys/class/power_supply/battery/charger_timer
@@ -173,7 +176,8 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     keycodes 114 115
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
-    --baudrate 3000000 --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
+    --tosleep 50000 --baudrate 3000000 --use_baudrate_for_download --i2s=1,1,0,1 \
+    --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
     class main
     user bluetooth
     group bluetooth net_bt_admin
@@ -191,18 +195,6 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmc
     user root
     disabled
 
-# for modem link
-service modem /system/xbin/wireless_modem
-    user system
-    group system radio
-    disabled
-
-on property:service.modem.enable=1
-    start modem
-
-on property:service.modem.enable=0
-    stop modem
-
 on property:ro.emmc=1
     start rmt_storage
 
@@ -210,21 +202,6 @@ service dmagent /system/bin/dmagent -N -P19 -VSY
     socket dmagent stream 660 root radio
     user root
     group radio cache inet misc
-
-# HTC IPC server
-#service htcipcd /system/bin/htcipcd
-#    user root
-#    group root system
-
-# CIQ backend daemon
-#service iqd /system/bin/iqd
-#    user root
-#    group root system
-
-# CIQ frontend daemon
-#service iqfd /system/bin/iqfd
-#    user root
-#    group root system
 
 service srv_ser2net /system/bin/ser2net -n
     disabled
@@ -253,12 +230,11 @@ service htcbatt /system/bin/htcbatt
     class core
     user root
 
-service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+service mpdecision /system/bin/mpdecision --Nw 5.4 --Ts 350 --no_sleep --avg_comp --single_core_while_panel_off
     user root
     disabled
 
 on property:init.svc.bootanim=stopped
-    start thermald
     start mpdecision
 
 service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
@@ -275,9 +251,6 @@ service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
 
 service 3d_camera /system/bin/3D_calibration
     user root
-
-# Discretix DRM
-service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/fuse
 
 on property:ro.build.tags=test-keys
     start htc_ebdlogd
