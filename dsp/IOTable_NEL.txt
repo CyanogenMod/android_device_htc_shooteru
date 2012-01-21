@@ -1,0 +1,779 @@
+// 05.23(Youyu Lin). SHR#U first version for txt format
+// 06.14(Youyu Lin). modify A16 R51 C0->80 for only LADC
+Uplink Path
+A00,Initial
+w 30 00 01
+w 30 01 00
+w 30 02 21
+w 30 7B 01
+w 30 00 00
+w 30 06 18
+w 30 05 51
+w 30 04 03
+w 30 05 D1
+w 30 0B 83
+w 30 0C 85
+w 30 12 83
+w 30 13 85
+w 30 00 01
+w 30 0A 3B
+w 30 0C 08
+w 30 0D 08
+w 30 0E 08
+w 30 0F 08
+w 30 10 00
+w 30 11 00
+w 30 12 00
+w 30 13 00
+w 30 00 00
+w 30 40 00
+w 30 52 00
+w 30 1B 0C
+w 30 1E 94
+
+A01,Call_Uplink_IMIC_Receiver
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 39 20
+w 30 37 80
+w 30 3B 36
+w 30 3C 36
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 C0
+
+A02,Call_Uplink_EMIC_Headphone
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 2E
+w 30 3C 2E
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A03,Call_Uplink_IMIC_Headphone
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A04,Call_Uplink_IMIC_Speaker
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 39 20
+w 30 37 80
+w 30 3B 36
+w 30 3C 36
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 C0
+
+A05,Call_Uplink_IMIC_Receiver_DualMIC
+w 30 00 00
+
+A06,Call_Uplink_EMIC_Headphone_DualMIC
+w 30 00 00
+
+A07,Call_Uplink_IMIC_Speaker_DualMIC
+w 30 00 00
+
+A08,Call_Uplink_IMIC_Receiver_TestSIM
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A09,Call_Uplink_EMIC_Headphone_TestSIM
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A10,Call_Uplink_IMIC_Speaker_TestSIM
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A11,Playback_Receiver
+w 30 00 00
+
+A12,Playback_Headphone
+w 30 00 00
+
+A13,Playback_Speaker
+w 30 00 00
+
+A14,Ring_Headphone_Speaker
+w 30 00 00
+
+A15,VoiceRecord_IMIC
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 4C
+w 30 3C 4C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A16,VoiceRecord_EMIC
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 4C
+w 30 3C 4C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A17,VideoRecord_IMIC
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 2E
+w 30 3C 2E
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A18,VideoRecord_EMIC
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 2E
+w 30 3C 2E
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A19,VoiceRecognition_IMIC
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 3A
+w 30 3C 3A
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A20,VoiceRecognition_EMIC
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 3A
+w 30 3C 3A
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A21,FM_In_SPK
+w 30 00 01
+w 30 34 08
+w 30 36 80
+w 30 37 08
+w 30 39 80
+w 30 3B 08
+w 30 3C 08
+
+A22,FM_In_Headphone
+w 30 00 01
+w 30 34 08
+w 30 36 80
+w 30 37 08
+w 30 39 80
+w 30 3B 0E
+w 30 3C 0E
+
+A23,TTY_In_HCO
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 1C
+w 30 3C 1C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A24,TTY_In_VCO
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 28
+w 30 3C 28
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A25,TTY_In_Full
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 1C
+w 30 3C 1C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A26,Muse
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A27,HAC
+w 30 00 00
+
+A28,Low_Power_Mode_IMIC_Receiv
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 3B 3C
+w 30 3C 3C
+w 30 00 00
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 51 80
+
+A29,Uplink_Path_Off
+w 30 00 01
+w 30 34 00
+w 30 36 00
+w 30 39 00
+w 30 37 00
+w 30 3B 80
+w 30 3C 80
+w 30 00 00
+w 30 52 88
+w 30 53 00
+w 30 54 00
+
+A30,Uplink_Wakeup
+w 30 00 01
+w 30 01 08
+w 30 02 21
+w 30 3D 00
+w 30 47 32
+w 30 00 00
+w 30 52 00
+
+A31,Power_Off
+w 30 00 00
+w 30 51 00
+w 30 3F 16
+w 30 00 01
+w 30 01 00
+w 30 02 28
+
+A32,Sleep_with_HP_In
+w 30 00 01
+w 30 02 01
+w 30 3D FF
+w 30 03 08
+w 30 04 08
+
+A33,VoiceRecord_IMIC_playback_speaker
+w 30 00 01
+w 30 09 3F
+w 30 10 06
+w 30 11 06
+w 30 0C 08
+w 30 0D 10
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F F2
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 37 00
+w 30 39 00
+w 30 3B 0A
+w 30 3C A8
+w 30 00 00
+w 30 51 C0
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 35 02
+
+A34,VoiceRecord_EMIC_Playback_headphone
+w 30 00 01
+w 30 10 02
+w 30 11 02
+w 30 0C 08
+w 30 0D 08
+w 30 09 3F
+w 30 00 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 40 00
+w 30 00 01
+w 30 34 80
+w 30 36 80
+w 30 37 00
+w 30 39 00
+w 30 3B 0A
+w 30 3C A8
+w 30 00 00
+w 30 51 C0
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 35 02
+
+A35,VoiceRecord_IMIC_Playback_headphone
+w 30 00 01
+w 30 10 02
+w 30 11 02
+w 30 0C 08
+w 30 0D 08
+w 30 09 3F
+w 30 00 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 40 00
+w 30 00 01
+w 30 34 20
+w 30 36 20
+w 30 37 00
+w 30 39 00
+w 30 3B 0A
+w 30 3C A8
+w 30 00 00
+w 30 51 C0
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 35 02
+
+A36,SKYPE_receiver_IMIC
+w 30 00 00
+
+A37,SKYPE_Speaker_IMIC
+w 30 00 00
+
+A38,SKYPE_Headset_EMIC
+w 30 00 00
+
+A39,SKYPE_NO_MIC_Headset_IMIC
+w 30 00 00
+
+A40,Stereo_video_recording_IMIC_mode1
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 37 02
+w 30 39 80
+w 30 3B 2E
+w 30 3C 2E
+w 30 00 00
+w 30 51 C0
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 35 02
+
+A41,Stereo_video_recording_IMIC_mode2
+w 30 00 01
+w 30 34 02
+w 30 36 80
+w 30 37 02
+w 30 39 80
+w 30 3B 2E
+w 30 3C 2E
+w 30 00 00
+w 30 51 C0
+w 30 52 00
+w 30 53 00
+w 30 54 00
+w 30 35 02
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+In downlink path
+B00,Initial
+w 30 00 00
+
+B01,Call_Downlink_IMIC_Receiver
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 44 64
+w 30 46 00
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B02,Call_Downlink_EMIC_Headphone
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B03,Call_Downlink_IMIC_Headphone
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B04,Call_Downlink_IMIC_Speaker
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B05,Call_Downlink_IMIC_Receiver_DualMIC
+w 30 00 00
+
+B06,Call_Downlink_EMIC_Headphone_DualMIC
+w 30 00 00
+
+B07,Call_Downlink_IMIC_Speaker_DualMIC
+w 30 00 00
+
+B08,Call_Downlink_IMIC_Receiver_TestSIM
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 44 64
+w 30 46 00
+w 30 00 01
+w 30 10 03
+w 30 11 03
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B09,Call_Downlink_EMIC_Headphone_TestSIM
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B10,Call_Downlink_IMIC_Speaker_TestSIM
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B11,Playback_Reciver
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F F2
+w 30 00 01
+w 30 10 3E
+w 30 11 3E
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B12,Playback_Headphone
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 08
+w 30 09 30
+
+B13,Playback_Speaker
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F F2
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B14,Ring_Headphone_Speaker
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F F2
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B15,Playback_Speaker_ALT
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F F2
+w 30 00 01
+w 30 10 3A
+w 30 11 3A
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B16,USB_AUDIO
+w 30 00 00
+
+B17,VideoRecord_IMIC
+w 30 00 00
+
+B18,VideoRecord_EMIC
+w 30 00 00
+
+B19,VoiceRecognition_IMIC
+w 30 00 00
+
+B20,VoiceRecognition_EMIC
+w 30 00 00
+
+B21,FM_Out_SPK
+w 30 00 00
+w 30 41 00
+w 30 42 00
+w 30 3F B2
+w 30 40 80
+w 30 00 01
+w 30 0C 08
+w 30 0D 08
+w 30 10 07
+w 30 11 07
+w 30 09 30
+
+B22,FM_Out_Headphone
+w 30 00 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 0C 08
+w 30 0D 08
+w 30 10 00
+w 30 11 00
+w 30 09 30
+
+B23,TTY_Out_HCO
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B24,TTY_Out_VCO
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B25,TTY_OUT_FULL
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B26,Muse
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F D6
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B27,HAC
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 00 01
+w 30 10 05
+w 30 11 05
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B28,Low_Power_Mode_IMIC_Receiver
+w 30 00 00
+w 30 40 00
+w 30 41 00
+w 30 42 00
+w 30 3F 96
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 0C 08
+w 30 0D 10
+w 30 09 30
+
+B29,Downlink_Path_Off
+w 30 00 00
+w 30 40 0C
+w 30 41 00
+w 30 42 00
+w 30 00 01
+w 30 10 00
+w 30 11 00
+w 30 12 00
+w 30 13 00
+w 30 09 00
+
+B30,Downlink_Wakeup
+w 30 00 01
+w 30 01 08
+w 30 02 21
+w 30 03 00
+w 30 04 00
+w 30 14 00
+w 30 47 32
+w 30 00 00
+w 30 40 00
+
+B31,I2S_CLK_RX
+w 30 00 00
+w 30 3F D4
+
+B32,I2S_CLK_TX_RX
+w 30 00 00
+w 30 51 C0
+w 30 3F D4
+
+//END

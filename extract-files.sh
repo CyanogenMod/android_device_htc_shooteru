@@ -38,8 +38,11 @@ adb pull /system/lib/libOpenVG.so ../../../vendor/$MANUFACTURER/$DEVICE/propriet
 adb pull /system/lib/libsc-a2xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/$MANUFACTURER$DEVICE/proprietary
 adb pull /system/lib/libaudcal.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libaudcalwb.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libaudcal_nel.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libacdbloader.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libacdbmapper.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libdiag.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamerapp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcameraface.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -103,8 +106,11 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/rmt_storage:/system/bin/rmt_storage \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:/system/lib/libaudioalsa.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal.so:/system/lib/libaudcal.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcalwb.so:/system/lib/libaudcalwb.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal_nel.so:/system/lib/libaudcal_nel.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libacdbloader.so:/system/lib/libacdbloader.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libacdbmapper.so:/system/lib/libacdbmapper.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libdiag.so:/system/lib/libdiag.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamerapp.so:/system/lib/libcamerapp.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera_client.so:/system/lib/libcamera_client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraface.so:/system/lib/libcameraface.so \\
