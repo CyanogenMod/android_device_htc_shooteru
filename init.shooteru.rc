@@ -70,6 +70,7 @@ on early-fs
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+on init
     # bluetooth power up/down interface
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -123,6 +124,7 @@ on early-fs
     # for charging function
     chown radio radio /sys/module/htc_battery_8x60/parameters/phone_call
     chmod 0660 /sys/module/htc_battery_8x60/parameters/phone_call
+
     # to enable low charge current in voice call
     chown radio radio /sys/class/power_supply/battery/charger_control
     chmod 0660 /sys/class/power_supply/battery/charger_control
@@ -130,15 +132,10 @@ on early-fs
     # for Slate charging timer
     chown radio /sys/class/power_supply/battery/charger_timer
 
-    # Discretix DRM
-    mkdir /data/DxDrm
-    mkdir /data/DxDrm/fuse
-    mkdir /data/DxDrm/Credentials
-    mkdir /data/DxDrm/Credentials/PlayReady
-    chmod 555 /data/DxDrm
-    mkdir /sdcard/download
-    copy /etc/DxPrdyProvisionObf.pkg /data/DxDrm/Credentials/PlayReady/DxPrdyProvisionObf.pkg
-    copy /etc/DxDrmConfig_Server.txt /data/DxDrm/DxDrmConfig_Server.txt
+    # Overwrite framework low memory killer setting
+    write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,4096,6144,8192,12288
+    write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
+    write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -167,7 +164,6 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-
 # bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     class main
@@ -184,12 +180,6 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci \
     disabled
     oneshot
 
-# for USB internet sharing
-service udhcpd /system/bin/udhcpd
-    class core
-    disabled
-    oneshot
-
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmcblk0p26 /dev/block/mmcblk0p18
     class core
     user root
@@ -198,28 +188,16 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmc
 on property:ro.emmc=1
     start rmt_storage
 
-service dmagent /system/bin/dmagent -N -P19 -VSY
-    socket dmagent stream 660 root radio
-    user root
-    group radio cache inet misc
-
-service srv_ser2net /system/bin/ser2net -n
+service modem /system/bin/wireless_modem
+    user system
+    group system radio
     disabled
 
-on property:service.ser2net.enable=1
-    start srv_ser2net
+on property:service.modem.enable=1
+    start modem
 
-on property:service.ser2net.enable=0
-    stop srv_ser2net
-
-# for vnc
-service androidvncserver /system/bin/androidvncserver -a
-    disabled
-    oneshot
-
-service usbnet /system/bin/usbnet on
-    disabled
-    oneshot
+on property:service.modem.enable=0
+    stop modem
 
 service hdmid /system/bin/hdmid
     socket displayd stream 0660 root system graphics
@@ -230,20 +208,31 @@ service htcbatt /system/bin/htcbatt
     class core
     user root
 
-service mpdecision /system/bin/mpdecision --Nw 5.4 --Ts 350 --no_sleep --avg_comp --single_core_while_panel_off
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_while_panel_off
     user root
     disabled
 
+service thermald /system/bin/thermald
+    user root
+    disabled
+
+service qcom-post-boot /system/sbin/init.qcom.post_boot.sh
+    user root
+    disabled
+    oneshot
+
 on property:init.svc.bootanim=stopped
+    start qcom-post-boot
+    start thermald
     start mpdecision
 
-service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
+service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
     user root
     disabled
     oneshot
     ioprio idle 0
 
-service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
+service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k -n 10 -N 10
     user root
     disabled
     oneshot
@@ -257,3 +246,21 @@ on property:ro.build.tags=test-keys
 
 on property:ro.build.tags=release-keys
     start htc_ebdlogd_rel
+
+# CABL
+service abld /system/bin/mm-abl-daemon
+    disabled
+
+on property:ro.qualcomm.cabl=1
+    start abld
+
+on property:ro.qualcomm.cabl=0
+    stop abld
+
+service qmuxd /system/bin/qmuxd
+    class main
+    user radio
+    group system radio inet
+
+service netmgrd /system/bin/netmgrd
+    class main

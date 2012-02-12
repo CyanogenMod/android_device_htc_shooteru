@@ -70,3 +70,6 @@ ro.phone_storage=0
 
 # Make rmt_storage start at init
 ro.emmc=1
+
+# System property for cabl
+ro.qualcomm.cabl=1

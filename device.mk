@@ -29,10 +29,10 @@ PRODUCT_COPY_FILES += \
 
 ## ramdisk stuffs
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/init.rc:root/init.rc \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc \
-    device/htc/shooteru/init.shooteru.usb.rc:root/init.shooteru.usb.rc
+    device/htc/shooteru/init.shooteru.usb.rc:root/init.shooteru.usb.rc \
+    device/htc/shooteru/init.qcom.post_boot.sh:system/bin/init.qcom.post_boot.sh
 
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
@@ -117,23 +117,24 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/firmware/default_rogers_bak.acdb:system/etc/firmware/default_rogers_bak.acdb
 
 # HTC BT Audio tune
-PRODUCT_COPY_FILES += device/htc/shooteru/prebuilt/AudioBTID.csv:system/etc/AudioBTID.csv
+PRODUCT_COPY_FILES += device/htc/shooteru/configs/AudioBTID.csv:system/etc/AudioBTID.csv
 
-## misc
+# QC thermald config
+PRODUCT_COPY_FILES += device/htc/shooteru/configs/thermald.conf:system/etc/thermald.conf
+
+# misc
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/vold.fstab:system/etc/vold.fstab
 
-## Kernel and modules
+# Kernel and modules
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/shooteru/prebuilt/kernel
+    LOCAL_KERNEL := device/htc/shooteru/prebuilt/kernel
 else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel \
     device/htc/shooteru/prebuilt/bcm4329.ko:system/lib/modules/bcm4329.ko
 
 # common msm8660 configs
@@ -142,6 +143,6 @@ $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
 ## htc audio settings
 $(call inherit-product, device/htc/shooteru/media_htcaudio.mk)
 
-$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
