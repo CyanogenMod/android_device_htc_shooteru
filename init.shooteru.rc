@@ -145,10 +145,6 @@ on init
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-service post-boot /system/bin/sh /system/etc/init.post_boot.sh
-    user root
-    oneshot
-
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh
     oneshot
@@ -221,7 +217,7 @@ service thermald /system/bin/thermald
     user root
     disabled
 
-service qcom-post-boot /system/sbin/init.qcom.post_boot.sh
+service qcom-post-boot /system/bin/init.qcom.post_boot.sh
     user root
     disabled
     oneshot
