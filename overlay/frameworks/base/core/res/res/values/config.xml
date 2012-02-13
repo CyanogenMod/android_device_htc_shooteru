@@ -21,8 +21,8 @@
      for different hardware and product builds. -->
 <resources>
 
-    <!-- Default color for notification LED is white. -->
-    <color name="config_defaultNotificationColor">#ffffffff</color>
+    <!-- Default color for notification LED is green. -->
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
 
     <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
@@ -33,8 +33,11 @@
     <!-- Our amoled doesn't animate well. -->
     <bool name="config_animateScreenLights">false</bool>
 
+    <!-- Control whether being in the desk dock (and powered) always
+         keeps the screen on.  By default it stays on when plugged in to
+         AC.  0 will not keep it on; or together 1 to stay on when plugged
+         in to AC and 2 to stay on when plugged in to USB.  (So 3 for both.) -->
     <integer name="config_deskDockKeepsScreenOn">0</integer>
-    <integer name="config_carDockKeepsScreenOn">1</integer>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -195,6 +198,7 @@
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
+    <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
     <bool name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- Component name of the service providing network location support. -->
@@ -209,11 +213,6 @@
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
     <string name="default_wallpaper_component">com.android.phasebeam/.PhaseBeamWallpaper</string>
-
-    <!-- Vibrator pattern for feedback about touching a virtual key -->
-    <integer-array name="config_virtualKeyVibePattern">
-        <item>40</item>
-    </integer-array>
 
     <!-- Set to true if the RSSI should always display CDMA signal
          strength even on EVDO -->
