@@ -13,7 +13,7 @@
 # limitations under the License.
 
 #
-# Input Device Calibration File for the shooteru touch screen.
+# Input Device Calibration File for the Tuna touch screen.
 #
 
 # Basic Parameters
@@ -40,3 +40,6 @@ touch.pressure.scale = 0.01
 # Orientation
 touch.orientation.calibration = none
 
+# This is an internal device, not an external peripheral attached to the USB
+# or Bluetooth bus.
+device.internal = 1

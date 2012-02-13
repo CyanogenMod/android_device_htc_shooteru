@@ -98,18 +98,23 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
-## Keylayouts and Keychars
+# keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/shooteru/keychars/BT_HID.kcm.bin:system/usr/keychars/BT_HID.kcm.bin \
-    device/htc/shooteru/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    device/htc/shooteru/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/htc/shooteru/keychars/shooteru-keypad.kcm.bin:system/usr/keychars/shooteru-keypad.kcm.bin \
     device/htc/shooteru/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
-    device/htc/shooteru/keylayout/shooteru-keypad.kl:system/usr/keylayout/shooteru-keypad.kl \
     device/htc/shooteru/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     device/htc/shooteru/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl\
     device/htc/shooteru/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
-    device/htc/shooteru/prebuilt/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc
+    device/htc/shooteru/keylayout/shooteru-keypad.kl:system/usr/keylayout/shooteru-keypad.kl
+
+# Keychars
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/keychars/shooteru-keypad.kcm:system/usr/keychars/shooteru-keypad.kcm \
+    device/htc/shooteru/keychars/atmel-touchscreen.kcm:system/usr/keychars/atmel-touchscreen.kcm
+
+# idc
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/shooteru/idc/shooteru-keypad.idc:system/usr/idc/shooteru-keypad.idc
 
 # Device Specific Firmware
 PRODUCT_COPY_FILES += \
