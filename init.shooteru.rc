@@ -219,7 +219,6 @@ service thermald /system/bin/thermald
 service qcom-post-boot /system/bin/init.qcom.post_boot.sh
     user root
     disabled
-    oneshot
 
 on property:init.svc.bootanim=stopped
     start qcom-post-boot
