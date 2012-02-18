@@ -216,12 +216,7 @@ service thermald /system/bin/thermald
     user root
     disabled
 
-service qcom-post-boot /system/bin/init.qcom.post_boot.sh
-    user root
-    disabled
-
 on property:init.svc.bootanim=stopped
-    start qcom-post-boot
     start thermald
     start mpdecision
 
