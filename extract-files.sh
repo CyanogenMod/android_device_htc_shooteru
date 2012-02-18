@@ -25,7 +25,6 @@ adb pull /system/bin/htc_ebdlogd ../../../vendor/$MANUFACTURER/$DEVICE/proprieta
 adb pull /system/bin/htcbatt ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/load-modem.sh ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/logcat2 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/bin/mm-abl-daemon ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/mpdecision ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/netmgrd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/qmuxd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -113,7 +112,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htcbatt:system/bin/htcbatt \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/load-modem.sh:system/bin/load-modem.sh \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/logcat2:system/bin/logcat2 \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/mm-abl-daemon:system/bin/mm-abl-daemon \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/mpdecision:system/bin/mpdecision \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/netmgrd:system/bin/netmgrd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\

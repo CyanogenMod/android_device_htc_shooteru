@@ -241,16 +241,6 @@ on property:ro.build.tags=test-keys
 on property:ro.build.tags=release-keys
     start htc_ebdlogd_rel
 
-# CABL
-service abld /system/bin/mm-abl-daemon
-    disabled
-
-on property:ro.qualcomm.cabl=1
-    start abld
-
-on property:ro.qualcomm.cabl=0
-    stop abld
-
 service qmuxd /system/bin/qmuxd
     class main
     user radio
