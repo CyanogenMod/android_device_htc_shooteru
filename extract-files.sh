@@ -41,6 +41,7 @@ adb pull /system/lib/libgsl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libC2D2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libOpenVG.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libsc-a2xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libhtc_acoustic.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/$MANUFACTURER$DEVICE/proprietary
 adb pull /system/lib/libaudcal.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudcalwb.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -55,6 +56,7 @@ adb pull /system/lib/libidl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libnetmgr.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libqdp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libqmi.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libhtc_ril.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamerapp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcameraface.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -63,20 +65,15 @@ adb pull /system/lib/liboemcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/propr
 adb pull /system/lib/libOlaEngine.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libposteffect.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libgemini.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libhtc_acoustic.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libhtc_ril.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmmipl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmmjpeg.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmmjpeg2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmmjps.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmmmpo.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmmstereo.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmpl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmllite.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libmlplatform.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libmm-color-convertor.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libv8.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/hw/camera.default.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/hw/lights.msm8660.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libmpl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libmllite.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libmlplatform.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/hw/sensors.shooteru.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/$DEVICE-vendor-blobs.mk
@@ -119,6 +116,16 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/snd3254:system/bin/snd3254 \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/thermald:system/bin/thermald \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/wireless_modem:system/bin/wireless_modem \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:system/lib/libOpenVG.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libC2D2.so:system/lib/libC2D2.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a2xx.so:system/lib/libsc-a2xx.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:system/lib/libaudioalsa.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal.so:system/lib/libaudcal.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcalwb.so:system/lib/libaudcalwb.so \\
@@ -133,6 +140,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libnetmgr.so:system/lib/libnetmgr.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libqdp.so:system/lib/libqdp.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libqmi.so:system/lib/libqmi.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_ril.so:system/lib/libhtc_ril.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamerapp.so:system/lib/libcamerapp.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera_client.so:system/lib/libcamera_client.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraface.so:system/lib/libcameraface.so \\
@@ -140,25 +148,15 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOlaEngine.so:system/lib/libOlaEngine.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libposteffect.so:system/lib/libposteffect.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgemini.so:system/lib/libgemini.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:system/lib/libOpenVG.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libC2D2.so:system/lib/libC2D2.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a2xx.so:system/lib/libsc-a2xx.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_ril.so:system/lib/libhtc_ril.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmpl.so:system/lib/libmpl.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmllite.so:system/lib/libmllite.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmlplatform.so:system/lib/libmlplatform.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libv8.so:system/lib/libv8.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/camera.default.so:system/lib/hw/camera.default.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/lights.msm8660.so:system/lib/hw/lights.msm8660.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmpl.so:system/lib/libmpl.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmllite.so:system/lib/libmllite.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmlplatform.so:system/lib/libmlplatform.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.shooteru.so:system/lib/hw/sensors.shooteru.so
 EOF
 
