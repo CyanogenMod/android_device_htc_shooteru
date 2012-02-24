@@ -144,6 +144,10 @@ on init
     write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
+on early-boot
+    # set RLIMIT_MEMLOCK to 256MB
+    setrlimit 8 268435456 268435456
+
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
