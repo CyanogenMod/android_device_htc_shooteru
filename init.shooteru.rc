@@ -70,6 +70,13 @@ on early-fs
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+    mkdir /data/audio 0770 media audio
+    # Enable the setgid bit on the directory
+    chmod 2770 /data/audio
+
+    mkdir /data/radio 0770 radio radio
+    chmod 2770 /data/radio
+
 on init
     # bluetooth power up/down interface
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -151,43 +158,61 @@ on early-boot
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
+# Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
+
+# Assign TCP buffer thresholds to be ceiling value of technology maximums
+# Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  1220608
+    write /proc/sys/net/core/wmem_max  1220608
+
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
-    class main
+    class late_start
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
 # bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    class main
+    class late_start
     disabled
     oneshot
     keycodes 114 115
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
     --baudrate 3000000 --patchram /vendor/firmware/bcm4329.hcd /dev/ttyHS0
-    class main
+    class late_start
     user bluetooth
     group bluetooth net_bt_admin
     disabled
     oneshot
 
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p25 /dev/block/mmcblk0p26 /dev/block/mmcblk0p18
-    class core
+    class late_start
     user root
     disabled
 
@@ -206,19 +231,21 @@ on property:service.modem.enable=0
     stop modem
 
 service hdmid /system/bin/hdmid
-    socket displayd stream 0660 root system graphics
-    disable
-    start hdmid
+    class late_start
+    socket hdmid stream 0660 root system graphics
+    disabled
 
 service htcbatt /system/bin/htcbatt
-    class core
+    class late_start
     user root
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_while_panel_off
+    class late_start
     user root
     disabled
 
 service thermald /system/bin/thermald
+    class late_start
     user root
     disabled
 
@@ -239,6 +266,7 @@ service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k -n 10 -N 10
     ioprio idle 0
 
 service 3d_camera /system/bin/3D_calibration
+    class late_start
     user root
 
 on property:ro.build.tags=test-keys
@@ -247,13 +275,14 @@ on property:ro.build.tags=test-keys
 on property:ro.build.tags=release-keys
     start htc_ebdlogd_rel
 
+# QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class main
+    class late_start
     user radio
-    group system radio inet
+    group radio audio
 
 service netmgrd /system/bin/netmgrd
-    class main
+    class late_start
 
 on property:sys.radio.shutdown=true
     write /sys/devices/platform/rs300000a7.65536/force_sync 1
