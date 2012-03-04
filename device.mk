@@ -31,8 +31,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/prebuilt/init:root/init \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
-    device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc \
-    device/htc/shooteru/init.shooteru.usb.rc:root/init.shooteru.usb.rc
+    device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
 
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
