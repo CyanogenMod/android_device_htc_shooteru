@@ -32,7 +32,6 @@ USE_CAMERA_STUB := true
 -include vendor/htc/shooteru/BoardConfigVendor.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := shooteru
-TARGET_PROVIDES_LIBRIL := vendor/htc/shooteru/proprietary/libril.so
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=shooteru no_console_suspend=1
 BOARD_KERNEL_BASE := 0x48000000
