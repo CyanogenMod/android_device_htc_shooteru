@@ -20,7 +20,6 @@ DEVICE=shooteru
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
 adb pull /system/bin/charging ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/bin/hdmid ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htc_ebdlogd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htcbatt ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/load-modem.sh ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -105,7 +104,6 @@ PRODUCT_COPY_FILES += \\
 # All the blobs necessary for shooteru
 PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/charging:system/bin/charging \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/hdmid:system/bin/hdmid \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htc_ebdlogd:system/bin/htc_ebdlogd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htcbatt:system/bin/htcbatt \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/load-modem.sh:system/bin/load-modem.sh \\
