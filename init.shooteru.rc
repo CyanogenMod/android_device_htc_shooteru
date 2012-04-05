@@ -272,13 +272,18 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp --single_core_wh
     disabled
 
 service thermald /system/bin/thermald
+    class main
+    user root
+    group root
+
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     class late_start
     user root
     disabled
+    oneshot
 
-on property:init.svc.bootanim=stopped
-    start thermald
-    start mpdecision
+on property:sys.boot_completed=1
+    start qcom-post-boot
 
 service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
     user root
@@ -306,11 +311,12 @@ on property:ro.build.tags=release-keys
 service qmuxd /system/bin/qmuxd
     class late_start
     user radio
-    group radio audio
+    group radio audio bluetooth
 
 service netmgrd /system/bin/netmgrd
     class late_start
 
 on property:sys.radio.shutdown=true
-    write /sys/devices/platform/rs300000a7.65536/force_sync 1
-    write /sys/devices/platform/rs300100a7.65536/force_sync 1
+   exec /system/bin/sh /system/etc/init.qcom.efs.sync.sh
+   user root
+   group root

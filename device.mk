@@ -34,6 +34,11 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/init.shooteru.usb.rc:root/init.shooteru.usb.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
 
+# Qualcomm scripts
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+    device/htc/shooteru/prebuilt/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
+
 # BCM4329 BT Firmware
 PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
