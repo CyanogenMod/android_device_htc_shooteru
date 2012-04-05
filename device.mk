@@ -33,6 +33,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/init.shooteru.rc:root/init.shooteru.rc \
     device/htc/shooteru/ueventd.shooteru.rc:root/ueventd.shooteru.rc
 
+# BCM4329 BT Firmware
+PRODUCT_COPY_FILES += \
+    device/htc/msm8660-common/firmware/bcm4329.hcd:system/vendor/firmware/bcm4329.hcd
+
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
 
@@ -139,7 +143,7 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    device/htc/shooteru/prebuilt/bcm4329.ko:system/lib/modules/bcm4329.ko
+    device/htc/shooteru/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko
 
 # common msm8660 configs
 $(call inherit-product, device/htc/msm8660-common/msm8660.mk)
@@ -150,3 +154,6 @@ $(call inherit-product, device/htc/shooteru/media_htcaudio.mk)
 $(call inherit-product, frameworks/base/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/htc/shooteru/shooteru-vendor.mk)
+
+WIFI_BAND := 802_11_ABG
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
