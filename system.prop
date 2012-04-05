@@ -6,6 +6,7 @@ debug.sf.hw=1
 debug.composition.type=dyn
 ro.sf.compbypass.enable=1
 dev.pm.dyn_samplingrate=1
+debug.enabletr=true
 
 #cm qcom build lub
 com.qc.hardware=true

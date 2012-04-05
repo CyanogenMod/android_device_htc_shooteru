@@ -135,15 +135,7 @@ PRODUCT_COPY_FILES += device/htc/shooteru/configs/thermald.conf:system/etc/therm
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/vold.fstab:system/etc/vold.fstab
 
-# Kernel and modules
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/htc/shooteru/prebuilt/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
     device/htc/shooteru/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko
 
 # common msm8660 configs

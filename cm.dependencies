@@ -1,0 +1,11 @@
+[
+  {
+    "repository": "android_device_htc_msm8660-common",
+    "target_path": "device/htc/msm8660-common"
+  },
+  {
+    "repository": "htc-kernel-msm8660",
+    "target_path": "kernel/htc/msm8660",
+    "branch": "android-msm-3.0-caf"
+  }
+]
