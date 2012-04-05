@@ -19,8 +19,8 @@ DEVICE=shooteru
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
-adb pull /system/bin/bma150_usr ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/charging ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/bin/hdmid ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htc_ebdlogd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htcbatt ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/load-modem.sh ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -41,6 +41,7 @@ adb pull /system/lib/libgsl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libC2D2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libOpenVG.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libsc-a2xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libsc-a3xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libhtc_acoustic.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/$MANUFACTURER$DEVICE/proprietary
 adb pull /system/lib/libaudcal.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -103,8 +104,8 @@ PRODUCT_COPY_FILES += \\
 
 # All the blobs necessary for shooteru
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/bma150_usr:system/bin/bma150_usr \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/charging:system/bin/charging \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/hdmid:system/bin/hdmid \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htc_ebdlogd:system/bin/htc_ebdlogd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htcbatt:system/bin/htcbatt \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/load-modem.sh:system/bin/load-modem.sh \\
@@ -125,6 +126,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:system/lib/libOpenVG.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libC2D2.so:system/lib/libC2D2.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a2xx.so:system/lib/libsc-a2xx.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a3xx.so:system/lib/libsc-a3xx.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:system/lib/libaudioalsa.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal.so:system/lib/libaudcal.so \\
