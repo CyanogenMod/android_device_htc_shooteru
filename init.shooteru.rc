@@ -183,6 +183,9 @@ on init
     write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
+    # HTC Phone Call
+    chown radio /sys/module/gpio_event/parameters/phone_call_status
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
