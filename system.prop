@@ -66,9 +66,6 @@ wifi.supplicant_scan_interval=30
 # appropriately. If this property is not defined, the default value is 160 dpi.
 ro.sf.lcd_density=240
 
-# For auto backlight default value
-settings.display.autobacklight=1
-
 # For the default value of agps
 ro.ril.def.agps.mode=2
 
@@ -76,18 +73,7 @@ ro.ril.def.agps.mode=2
 # This is a 16.16 fixed point number
 ro.opengles.version=131072
 
-mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0
-
-# For emmc phone storage
-ro.phone_storage=0
-
-# Make rmt_storage start at init
-ro.emmc=1
-
-# System property for cabl
-ro.qualcomm.cabl=1
-
-ro.com.google.locationfeatures=1
+mobiledata.interfaces=rmnet0
 
 # UMS
 persist.sys.usb.config=mass_storage,adb
