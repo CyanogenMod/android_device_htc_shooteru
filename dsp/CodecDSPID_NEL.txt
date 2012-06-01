@@ -1,4 +1,4 @@
-Header, 8x60_soundeffet_forNEL_2011_0622_V00
+Header, 8x60_SHR#U_soundeffet_forNEL_2011_0718_V01
 ## Group for phone ##
 Phone_Default,/system/etc/soundimage/Sound_Phone_Original_NEL.txt
 Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Phone_Original_REC_NEL.txt

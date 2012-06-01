@@ -1,5 +1,10 @@
 // 05.23(Youyu Lin). SHR#U first version for txt format
-// 06.14(Youyu Lin). modify A16 R51 C0->80 for only LADC
+// 06.14(Youyu Lin). HTC Recording	A16			0x51, C0->80 for only LADC
+// 06.15(Youyu Lin). 3rdAP Recordin A19, A20 	0x3B,0x3C	3A->36 for VR, 3rd AP -15dBFS
+// 06.23(Youyu Lin). FMSPK			B21 		0x0C,0x0D	08->09 =1 dB P=432mW
+// 06.23(Youyu Lin). NoMicHeadset	A03 		0x3B,0x3C	3C->36 (-3dB) 
+// 06.23(Youyu Lin). Headset		A02			0x3B,0x3C	2E->30 (+1dB) 
+// 06.29(Youyu Lin). Camcoder mode2 A41			0x34,02->20 ;0x36, 80->02 ;0x37 02->80 change the routing
 Uplink Path
 A00,Initial
 w 30 00 01
@@ -49,8 +54,8 @@ A02,Call_Uplink_EMIC_Headphone
 w 30 00 01
 w 30 34 02
 w 30 36 80
-w 30 3B 2E
-w 30 3C 2E
+w 30 3B 30
+w 30 3C 30
 w 30 00 00
 w 30 52 00
 w 30 53 00
@@ -61,8 +66,8 @@ A03,Call_Uplink_IMIC_Headphone
 w 30 00 01
 w 30 34 20
 w 30 36 20
-w 30 3B 3C
-w 30 3C 3C
+w 30 3B 36
+w 30 3C 36
 w 30 00 00
 w 30 52 00
 w 30 53 00
@@ -192,8 +197,8 @@ A19,VoiceRecognition_IMIC
 w 30 00 01
 w 30 34 20
 w 30 36 20
-w 30 3B 3A
-w 30 3C 3A
+w 30 3B 36
+w 30 3C 36
 w 30 00 00
 w 30 52 00
 w 30 53 00
@@ -204,8 +209,8 @@ A20,VoiceRecognition_EMIC
 w 30 00 01
 w 30 34 02
 w 30 36 80
-w 30 3B 3A
-w 30 3C 3A
+w 30 3B 36
+w 30 3C 36
 w 30 00 00
 w 30 52 00
 w 30 53 00
@@ -437,9 +442,9 @@ w 30 35 02
 
 A41,Stereo_video_recording_IMIC_mode2
 w 30 00 01
-w 30 34 02
-w 30 36 80
-w 30 37 02
+w 30 34 20
+w 30 36 02
+w 30 37 80
 w 30 39 80
 w 30 3B 2E
 w 30 3C 2E
@@ -650,8 +655,8 @@ w 30 40 80
 w 30 00 01
 w 30 0C 08
 w 30 0D 08
-w 30 10 07
-w 30 11 07
+w 30 10 08
+w 30 11 08
 w 30 09 30
 
 B22,FM_Out_Headphone
