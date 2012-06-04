@@ -8,6 +8,9 @@ ro.sf.compbypass.enable=1
 dev.pm.dyn_samplingrate=1
 debug.enabletr=true
 
+lpa.use-stagefright=true
+lpa.decode=true
+
 #cm qcom build lub
 com.qc.hardware=true
 com.qc.hdmi_out=true
