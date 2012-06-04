@@ -63,6 +63,9 @@
 /dev/ttyHSUSB0          0600    system      system
 /dev/ttySA0             0600    system      system
 /dev/smd0               0640    radio       radio
+/dev/smd2               0660    bluetooth   bluetooth
+/dev/smd3               0660    bluetooth   bluetooth
+/dev/smd4               0660    system      system
 /dev/smd7               0640    radio       radio
 /dev/smd9               0600    system      system
 /dev/smdcntl0           0640    radio       radio
@@ -80,3 +83,8 @@
 
 /dev/msm_dsps           0660    system      system
 /dev/rtc0               0600    system      system
+
+/dev/rmnet_mux_ctrl     0640    radio       radio
+/dev/oncrpc/*           0660    root        qcom_oncrpc
+/dev/tzcom              0660    system      drmrpc
+/dev/qseecom            0660    system      drmrpc
