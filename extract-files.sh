@@ -19,6 +19,8 @@ DEVICE=shooteru
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 
+adb pull /system/bin/3D_calibration ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/bin/3D_calibration_main ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/charging ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htc_ebdlogd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/bin/htcbatt ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -40,7 +42,6 @@ adb pull /system/lib/libgsl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libC2D2.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libOpenVG.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libsc-a2xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libsc-a3xx.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libhtc_acoustic.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudioalsa.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libaudcal.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -57,11 +58,16 @@ adb pull /system/lib/libnetmgr.so ../../../vendor/$MANUFACTURER/$DEVICE/propriet
 adb pull /system/lib/libqdp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libqmi.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libhtc_ril.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/hw/camera.default.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcamerapp.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libcameraLN.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libcameraSP.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libcameraface.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/libcameraface.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libchromatix_qs_s5k4e1_preview.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libchromatix_qs_s5k4e1_video.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/libmmmpo.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/liboemcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+adb pull /system/lib/liboemcamera_main.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libOlaEngine.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libposteffect.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libgemini.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -69,7 +75,6 @@ adb pull /system/lib/libmmipl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprieta
 adb pull /system/lib/libmmjpeg.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmm-color-convertor.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libv8.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
-adb pull /system/lib/hw/camera.default.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/hw/lights.msm8660.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmpl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmllite.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
@@ -103,6 +108,8 @@ PRODUCT_COPY_FILES += \\
 
 # All the blobs necessary for shooteru
 PRODUCT_COPY_FILES += \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/3D_calibration:system/bin/3D_calibration \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/3D_calibration_main:system/bin/3D_calibration_main \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/charging:system/bin/charging \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htc_ebdlogd:system/bin/htc_ebdlogd \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/htcbatt:system/bin/htcbatt \\
@@ -124,7 +131,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOpenVG.so:system/lib/libOpenVG.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libC2D2.so:system/lib/libC2D2.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a2xx.so:system/lib/libsc-a2xx.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libsc-a3xx.so:system/lib/libsc-a3xx.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudioalsa.so:system/lib/libaudioalsa.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudcal.so:system/lib/libaudcal.so \\
@@ -141,10 +147,16 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libqdp.so:system/lib/libqdp.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libqmi.so:system/lib/libqmi.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libhtc_ril.so:system/lib/libhtc_ril.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/camera.default.so:system/lib/hw/camera.default.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamerapp.so:system/lib/libcamerapp.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcamera_client.so:system/lib/libcamera_client.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraLN.so:system/lib/libcameraLN.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraSP.so:system/lib/libcameraSP.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libcameraface.so:system/lib/libcameraface.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_qs_s5k4e1_preview.so:system/lib/libchromatix_qs_s5k4e1_preview.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libchromatix_qs_s5k4e1_video.so:system/lib/libchromatix_qs_s5k4e1_video.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmmmpo.so:system/lib/libmmmpo.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/liboemcamera_main.so:system/lib/liboemcamera_main.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOlaEngine.so:system/lib/libOlaEngine.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libposteffect.so:system/lib/libposteffect.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libgemini.so:system/lib/libgemini.so \\
@@ -152,7 +164,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libv8.so:system/lib/libv8.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/camera.default.so:system/lib/hw/camera.default.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/lights.msm8660.so:system/lib/hw/lights.msm8660.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmpl.so:system/lib/libmpl.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmllite.so:system/lib/libmllite.so \\

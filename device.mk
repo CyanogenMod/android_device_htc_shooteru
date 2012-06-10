@@ -107,6 +107,10 @@ PRODUCT_COPY_FILES += \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
     device/htc/shooteru/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
 
+# Custom media config for HTC camera
+PRODUCT_COPY_FILES += \
+    device/htc/shooteru/configs/media_profiles.xml:system/etc/media_profiles.xml
+
 # keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/shooteru/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl\
